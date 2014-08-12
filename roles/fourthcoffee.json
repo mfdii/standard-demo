@@ -1,0 +1,9 @@
+{
+  "name": "fourthcoffee",
+  "default_attributes": {
+  },
+  "run_list": [
+    "role[win_base]",
+    "recipe[fourthcoffee]"
+  ]
+}

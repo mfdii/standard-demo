@@ -1,0 +1,13 @@
+{
+  "name": "win_base",
+  "default_attributes": {
+    "chef-client": {
+      "interval": "30"
+    }
+  },
+  "run_list": [
+    "recipe[chef-client]",
+    "recipe[windowshacks::w32time]",
+    "recipe[windowshacks::wsmanquickconfig]"
+  ]
+}

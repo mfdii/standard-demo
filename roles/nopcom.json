@@ -1,0 +1,20 @@
+{
+  "name": "nopcom",
+  "default_attributes": {
+    "chef-client": {
+      "init-style": "windows",
+      "interval": "300",
+      "config": {
+        "chef_server_url": "https://api.opscode.com/organizations/ducy",
+        "validation_client_name": "ducy-validator"
+      },
+      "nopcommerce": {
+        "elbname": "NOPelb"
+      }
+    }
+  },
+  "run_list": [
+    "role[win_base]",
+    "recipe[nopcommerce]"
+  ]
+}
