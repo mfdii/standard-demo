@@ -1,6 +1,6 @@
 name "base_centos"
 description "Base role for Centos nodes"
-run_list "recipe[chef-client]","recipe[push-jobs]","recipe[iptables]"
+run_list "recipe[chef-client]","recipe[push-jobs]","recipe[iptables]","recipe[fwrules]"
 default_attributes(
 	:chef_client => {
 		:interval => 60,
