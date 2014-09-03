@@ -25,8 +25,14 @@ node["apache"]["sites"].each do |site_name, site_data|
 	apache_site site_name do
 		port site_data["port"]
 		notifies :restart, "service[httpd]"
+		notifies :run, "execute[selinux_srv]"
 	end
 
+end
+
+execute "selinux_srv" do
+	command "chcon -Rv --type=httpd_sys_content_t /srv"
+	action :nothing
 end
 
 iptables_rule "http"
