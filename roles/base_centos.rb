@@ -13,8 +13,8 @@ default_attributes(
 		:install_rules => false
 	},
 	:fwrules => {
-		:80 => true,
-		:22 => true,
-		:443 => true
+		:'80' => true,
+		:'22' => true,
+		:'443' => true
 	}	
 )
