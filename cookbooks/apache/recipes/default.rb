@@ -35,7 +35,7 @@ execute "selinux_srv" do
 	action :nothing
 end
 
-iptables_rule "http"
+include_recipe "apache::fwrules"
 
 #Service Restarting/Start	
 service "httpd" do

@@ -1,0 +1,41 @@
+global
+  log 127.0.0.1   local0
+  log 127.0.0.1   local1 notice
+  #log loghost    local0 info
+  maxconn 4096
+  #debug
+  #quiet
+  user haproxy
+  group haproxy
+
+defaults
+  log     global
+  mode    http
+  retries 3
+  timeout client 50s
+  timeout connect 5s
+  timeout server 50s
+  option dontlognull
+  option httplog
+  option redispatch
+  balance  roundrobin
+
+# Set up application listeners here.
+
+listen admin
+  bind 0.0.0.0:22002
+  mode http
+  stats uri /
+
+<% node["apache"]["sites"].each do |site_name, site_data| -%>
+frontend <%= site_name %>-http
+  maxconn 2000
+  bind 0.0.0.0:<%= site_data["port"] %>
+  default_backend servers-<%= site_name %>-http
+
+
+backend servers-<%= site_name %>-http
+<% @servers.each do |s| -%>
+  server <%= s["hostname"] %> <%= s["ipaddress"] %>:<%= site_data["port"] %> weight 1 maxconn 100 check
+<% end -%>  
+<% end -%>
