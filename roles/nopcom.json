@@ -14,7 +14,7 @@
     }
   },
   "run_list": [
-    "role[win_base]",
+    "role[base_windows]",
     "recipe[nopcommerce]"
   ]
 }
