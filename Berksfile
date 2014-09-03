@@ -1,6 +1,6 @@
 source "https://api.berkshelf.com"
 
-cookbook 'chef-client', '~> 3.6.0'
+cookbook 'chef-client', '~> 3.7.0'
 cookbook 'windows', '~> 1.31.0'
 cookbook 'iis', '~> 2.1.2'
 cookbook 'aws', '~> 2.3.0'
