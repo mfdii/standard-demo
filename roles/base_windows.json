@@ -2,7 +2,8 @@
   "name": "base_windows",
   "default_attributes": {
     "chef_client": {
-      "interval": "30"
+      "interval": 60,
+      "splay": 30
     },
     "push_jobs": {
       "package_url": "http://s3.amazonaws.com/opscode-private-chef/windows/2008r2/x86_64/opscode-push-jobs-client-1.0.2-1.windows.msi"
