@@ -11,7 +11,7 @@ default_attributes(
 	},
 	:iptables => {
 		:install_rules => false
-	}
+	},
 	:fwrules => {
 		:80 => true,
 		:22 => true,
