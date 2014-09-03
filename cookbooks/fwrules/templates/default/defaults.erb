@@ -1,0 +1,7 @@
+<% node["fwrules"].each do |port, enable| 
+	if enable -%>
+# Port <%= port %> 
+-A FWR -p tcp -m tcp --dport <%= port %> -j ACCEPT
+<% 
+	end 
+end -%>
