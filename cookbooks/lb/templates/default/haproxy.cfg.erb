@@ -36,6 +36,6 @@ frontend <%= site_name %>-http
 
 backend servers-<%= site_name %>-http
 <% @servers.each do |s| -%>
-  server <%= s["hostname"] %> <%= s["ipaddress"] %>:<%= site_data["port"] %> weight 1 maxconn 100 check
+  server <%= @s["hostname"] %> <%= @s["ipaddress"] %>:<%= site_data["port"] %> weight 1 maxconn 100 check
 <% end -%>  
 <% end -%>

@@ -30,6 +30,8 @@ package "haproxy" do
 	action :install
 end
 
+log pool_members.uniq
+
 template "/etc/haproxy/haproxy.cfg" do
 	source "haproxy.cfg.erb"
 	owner "root"
@@ -40,6 +42,7 @@ template "/etc/haproxy/haproxy.cfg" do
 		)
 end
 
+include_recipe "apache::fwrules"
 
 service "haproxy" do
 	supports  :restart => true
