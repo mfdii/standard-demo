@@ -1,0 +1,4 @@
+<% node["apache"]["sites"].each do |site_name, site_data| -%>
+# Port <%= site_data['port'] %> for <%= site_name %>
+-A FWR -p tcp -m tcp --dport <%= site_data['port'] %> -j ACCEPT
+<% end -%>

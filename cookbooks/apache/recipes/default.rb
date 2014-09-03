@@ -29,6 +29,8 @@ node["apache"]["sites"].each do |site_name, site_data|
 
 end
 
+iptables_rule "http"
+
 #Service Restarting/Start	
 service "httpd" do
 	action [ :enable, :start ]
