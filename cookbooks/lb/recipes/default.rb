@@ -24,13 +24,9 @@ pool_members.map! do |member|
   {:ipaddress => server_ip, :hostname => member['hostname']}
 end
 
-
-
 package "haproxy" do
 	action :install
 end
-
-log pool_members.uniq
 
 template "/etc/haproxy/haproxy.cfg" do
 	source "haproxy.cfg.erb"
@@ -40,6 +36,7 @@ template "/etc/haproxy/haproxy.cfg" do
 	variables(
 		:servers => pool_members.uniq
 		)
+  notifies :restart, "service[haproxy]"
 end
 
 include_recipe "apache::fwrules"
