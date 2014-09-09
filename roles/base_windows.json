@@ -11,6 +11,8 @@
   },
   "run_list": [
     "recipe[chef-client]",
+    "recipe[chef-ohai-public_ip]",
+    "recipe[ohai]",
     "recipe[push-jobs]",
     "recipe[windowshacks::w32time]",
     "recipe[windowshacks::wsmanquickconfig]"
