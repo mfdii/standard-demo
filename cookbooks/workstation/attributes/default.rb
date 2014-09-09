@@ -1,0 +1,1 @@
+default['workstation']['git_repo'] = 'git://github.com/mfdii/standard-demo.git'
