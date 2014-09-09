@@ -28,6 +28,8 @@ listen admin
   stats uri /
 
 <% node["apache"]["sites"].each do |site_name, site_data| -%>
+
+#Definition for <%= site_name %>
 frontend <%= site_name %>-http
   maxconn 2000
   bind 0.0.0.0:<%= site_data["port"] %>
