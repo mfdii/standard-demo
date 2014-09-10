@@ -7,8 +7,13 @@
 # 
 #
 
+chef_server_ip ="nothing"
 
-chef_server_ip = search("node","name:ChefServer")
+chef_servers = search("node","name:ChefServer") || []
+log chef_servers
+chef_servers.map! do |member|
+	chef_server_ip = member['public_ip']
+end
 
 cookbook_file "/home/chef/update_server.sh" do
 	source "update_server.sh"
@@ -27,7 +32,7 @@ git "/home/chef/standard-demo" do
 	notifies :run, "execute[sync_server]"
 end
 
-log "ChefServer IP: #{chef_server_ip['public_ip']}"
+log "ChefServer IP: #{chef_server_ip}"
 
 template "/home/chef/user_data.sh" do
 	source "user_data.sh.erb"
@@ -35,6 +40,6 @@ template "/home/chef/user_data.sh" do
 	group "chef"
 	mode "755"
 	variables(
-		:chef_server_ip => chef_server_ip['public_ip']
+		:chef_server_ip => chef_server_ip
 		)
 end

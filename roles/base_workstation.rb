@@ -1,6 +1,6 @@
 name "base_workstation"
 description "Base role for workstation nodes"
-run_list "recipe[chef-client]","recipe[ohai-public_ip]","recipe[ohai]","recipe[push-jobs]","recipe[workstation]"
+run_list "recipe[workstation]"
 default_attributes(
 	:chef_client => {
 		:interval => 60,
