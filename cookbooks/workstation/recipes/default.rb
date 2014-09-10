@@ -43,3 +43,13 @@ template "/home/chef/user_data.sh" do
 		:chef_server_ip => chef_server_ip
 		)
 end
+
+template "/home/chef/user_data.ps1" do
+	source "user_data.ps1.erb"
+	user "chef"
+	group "chef"
+	mode "755"
+	variables(
+		:chef_server_ip => chef_server_ip
+		)
+end
