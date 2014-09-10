@@ -1,4 +1,4 @@
-cd ~/chef/standard-demo
+cd ~/standard-demo
 
 berks update
 
