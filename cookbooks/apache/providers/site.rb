@@ -18,14 +18,15 @@ action :create do
 	end
 	
 #Add a directory resource to create the document_root
-	directory document_root do
+	remote_directory document_root do
+		source site_name
 		mode "0755"
 		recursive true
 	end
 	
 #Add at template resource for the virtual host's index.html
 	template "#{document_root}/index.html" do
-		source "index.html.erb"
+		source "chef.html.erb"
 		mode "0644"
 		variables(
 			:site_name => site_name,
