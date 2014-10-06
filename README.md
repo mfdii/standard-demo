@@ -1,31 +1,75 @@
-The chef-repo
-===============
-All installations require a central workspace known as the chef-repo. This is a place where primitive objects--cookbooks, roles, environments, data bags, and chef-repo configuration files--are stored and managed.
+Standard Chef Demo
+==================
 
-The chef-repo should be kept under version control, such as [git](http://git-scm.org), and then managed as if it were source code.
+This Demo is built to show basic Chef uses cases to introduce the user to Chef. It can be run standalone or within the CloudShare Chef environment. 
 
-Knife Configuration
--------------------
-Knife is the [command line interface](http://docs.opscode.com/knife.html) for Chef. The chef-repo contains a .chef directory (which is a hidden directory by default) in which the Knife configuration file (knife.rb) is located. This file contains configuration settings for the chef-repo.
+Stories
+-------
 
-The knife.rb file is automatically created by the starter kit. This file can be customized to support configuration settings used by [cloud provider options](http://docs.opscode.com/plugin_knife.html) and custom [knife plugins](http://docs.opscode.com/plugin_knife_custom.html).
+The following stories are currently supported:
 
-Also located inside the .chef directory are .pem files, which contain private keys used to authenticate requests made to the Chef server. The USERNAME.pem file contains a private key unique to the user (and should never be shared with anyone). The ORGANIZATION-validator.pem file contains a private key that is global to the entire organization (and is used by all nodes and workstations that send requests to the Chef server).
+* Deploy Linux based Webservers with Linux based Load Balancer
+* Deploy Windows based Webserver
+* Deploy Linux or Windows based servers to AWS EC2, and leverage a ELB
 
-More information about knife.rb configuration options can be found in [the documentation for knife](http://docs.opscode.com/config_rb_knife.html).
-
-Cookbooks
----------
-A cookbook is the fundamental unit of configuration and policy distribution. A sample cookbook can be found in `cookbooks/starter`. After making changes to any cookbook, you must upload it to the Chef server using knife:
-
-    $ knife upload cookbooks/starter
-
-For more information about cookbooks, see the example files in the `starter` cookbook.
 
 Roles
 -----
-Roles provide logical grouping of cookbooks and other roles. A sample role can be found at `roles/starter.rb`.
 
-Getting Started
--------------------------
-Now that you have the chef-repo ready to go, check out [Learn Chef](https://learnchef.opscode.com/quickstart/workstation-setup/) to proceed with your workstation setup. If you have any questions about Chef you can always ask [our support team](https://www.opscode.com/support/tickets/new) for a helping hand.
+Centos:
+* `base_centos` - Base content for Centos based nodes.
+* `aws_webserver` - installs the `webserver` role and `apache::aws_lb` recipe to setup a server in EC2 as a webserver. Requires Centos based OS, and ELB in EC2.
+* `webserver` - installs a webserver for Centos nodes. Includes Chef website as content.
+* `LoadBalancer` - installs HAproxy and searches for `role:webserver` inorder to add to the LB pool.
+
+Windows:
+* `base_windows` - Base content for Windows based nodes.
+* `fourthcoffee` - Install the FourthCoffee website. Can be used for DSC and non-DSC based demos.
+* `nopcom` - Installs the NopCommerce ecommerce package.
+
+
+Cookbooks
+---------
+
+An effort is made to pull as many cookbooks from the community site and not include them in this repo. The Berksfile has the dependent cookbooks. The custom cookbooks included in the repo are listed below:
+
+* `apache` - Basic apache cookbook as written in the Chef Fundementals class and extended in the Chef Intermediate class.
+* `lb` - borrows from the HAProxy community cookbook but removes lots of unneeded content.
+* `fwrules` - Opens ports listed in the `node['fwrules']` attribute.
+* `workstation` - Makes changes to the workstation in CloudShare at launch. 
+
+
+CloudShare Usage
+----------------
+
+This demo can be used in a standalone environment that you provide or inside of the CloudShare Enterprise environment. 
+
+### Launching a Demo Environment in CloudShare
+
+1. Visit [CloudShare.com](http://cloudshare.com)
+2. Click the link to login to CloudShare Enterprise
+![alt text](images/1frontpage.png)
+
+3. Enter your username, password, and click `Login`
+![alt text](images/2login.png)
+
+4. You should now be logged into CloudShare and see a welcome screen.
+![alt text](images/3mainpage.png)
+
+5. Hover over `Environments` and then click `Create Environment`.
+![alt text](images/4createenv.png)
+
+6. Select `My Projects' Environment Templates`, make sure the `Project` is `Chef Demo Environments` and then click `Select Template`
+![alt text](images/5selectmethod.png)
+
+7. A list of the Project's templates will be displayed. Click `Add` next to the `Standard Demo Environment` template. Then click `Add Details & Save`
+![alt text](images/6projecttemplate.png)
+
+8. Give your Demo Environment a descriptive name (Optional) and description (optional), then click `Save Environment`
+![alt text](images/7name.png)
+
+9. You will then see a page showing the machines in your environment. Once all the VMs are in a `Ready` state you can begin using your environment.
+![alt text](images/8launch.png)
+
+
+### Using the CloudShare Demo
