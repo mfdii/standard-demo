@@ -73,3 +73,23 @@ This demo can be used in a standalone environment that you provide or inside of 
 
 
 ### Using the CloudShare Demo
+
+After your environment is ready, you can begin to use the Demo environment. 
+
+First open the web based VNC console for the ChefDK server:
+![alt text](images/chefdk-view.png)
+
+This will open a console that will show you the desktop of the ChefDK server:
+![alt text](images/chefdk-console.png)
+
+Before using the demo, you need to update the content on the ChefServer. You can do this by running `chef-client` on the ChefDK host. Use the terminal in the ChefDK host to run the following. The terminal should be at a `root` prompt, if not run `sudo su -` before executing the below.
+
+```
+chef-client && chef-client
+
+```
+
+This will run the `chef-client` twice. The first run will synchornize the Chef content from GitHub and upload it to the Chef Server. The second run will apply any new Chef content on the ChefDK server.
+
+You are now ready to use the demo. 
+
