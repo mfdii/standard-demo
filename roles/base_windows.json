@@ -7,7 +7,7 @@
     },
     "push_jobs": {
       "package_url": "https://opscode-private-chef.s3.amazonaws.com/windows/2008r2/x86_64/opscode-push-jobs-client-windows-1.1.5-1.windows.msi",
-      "package_checksum": "38b43b5895e44c4c64c5ae19337f7bc918ffdd2b"
+      "package_checksum": "d658121a1b3ec488152f97b8cfc0ed16adfca1a82418fd0e410874a148f6234e"
     }
   },
   "run_list": [

@@ -8,6 +8,7 @@ default_attributes(
 	},
 	:push_jobs	=> {
 		:package_url => "https://opscode-private-chef.s3.amazonaws.com/el/6/x86_64/opscode-push-jobs-client-1.1.5-1.el6.x86_64.rpm",
+		:package_checksum => "f5e6be32f60b689e999dcdceb102371a4ab21e5a1bb6fb69ff4b2243a7185d84"
 	},
 	:iptables => {
 		:install_rules => false
