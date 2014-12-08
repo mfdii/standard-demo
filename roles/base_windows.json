@@ -14,7 +14,6 @@
     "recipe[chef-client]",
     "recipe[ohai-public_ip]",
     "recipe[ohai]",
-    "recipe[push-jobs]",
     "recipe[windowshacks::w32time]",
     "recipe[windowshacks::wsmanquickconfig]"
   ]
