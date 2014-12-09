@@ -9,12 +9,16 @@
         "validation_client_name": "ducy-validator"
       },
       "nopcommerce": {
-        "elbname": "NOPelb"
+        "elbname": "NOPelb",
+        "dbuser": "sa",
+        "dbpassword": "Ch3fCan!",
+        "dbserver": "windowsdb"
       }
     }
   },
   "run_list": [
     "role[base_windows]",
-    "recipe[nopcommerce]"
+    "recipe[nopcommerce::demo]",
+    "recipe[nopcommerce::dbclient]"
   ]
 }
