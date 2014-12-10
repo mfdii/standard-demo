@@ -7,7 +7,7 @@
       "config": {
         "chef_server_url": "https://api.opscode.com/organizations/ducy",
         "validation_client_name": "ducy-validator"
-      },
+      }
     },
     "nopcommerce": {
       "elbname": "NOPelb",
@@ -15,7 +15,6 @@
       "dbpassword": "Ch3fCan!",
       "dbserver": "windowsdb"
     }
-    
   },
   "run_list": [
     "role[base_windows]",
