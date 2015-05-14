@@ -7,7 +7,7 @@ default_attributes(
 		:splay => 30,
 		:config => {
 			"Ohai::Config[:plugin_path]" => ' << "/etc/chef/ohai_plugins"',
-			:audit_mode => ":enabled"
+			"audit_mode" => ":enabled"
 		}
 	},
 	:push_jobs	=> {
