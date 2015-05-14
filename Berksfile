@@ -19,4 +19,4 @@ cookbook 'ohai-public_ip', git: 'git://github.com/mfdii/chef-ohai-public_ip.git'
 cookbook 'workstation', path: 'cookbooks/workstation'
 cookbook 'audit-cis', '~> 0.4.0'
 cookbook 'omnibus_updater', '~> 1.0.4'
-
+cookbook 'audit_rules', path: 'cookbooks/audit_rules'
