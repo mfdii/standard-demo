@@ -4,7 +4,11 @@ run_list "recipe[chef-client]","recipe[ohai-public_ip]","recipe[ohai]","recipe[p
 default_attributes(
 	:chef_client => {
 		:interval => 60,
-		:splay => 30
+		:splay => 30,
+		:config => {
+			"Ohai::Config[:plugin_path]" => ' << "/etc/chef/ohai_plugins"',
+			:audit_mode => ":enabled"
+		}
 	},
 	:push_jobs	=> {
 		:package_url => "https://opscode-private-chef.s3.amazonaws.com/el/6/x86_64/opscode-push-jobs-client-1.1.5-1.el6.x86_64.rpm",
@@ -17,5 +21,9 @@ default_attributes(
 		:'80' => true,
 		:'22' => true,
 		:'443' => true
-	}	
+	},
+	:omnibus_updater => {
+    :version => '12.3.0',
+    :restart_chef_service => true
+  }	
 )

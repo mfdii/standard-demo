@@ -1,6 +1,6 @@
 source "https://api.berkshelf.com"
 
-cookbook 'chef-client', '~> 3.7.0'
+cookbook 'chef-client', '~> 4.3.0'
 cookbook 'windows', '~> 1.34.8'
 cookbook 'iis', '~> 2.1.2'
 cookbook 'aws', '~> 2.3.0'
@@ -17,3 +17,6 @@ cookbook 'lb', path: 'cookbooks/lb'
 cookbook 'ohai', '~> 2.0.1'
 cookbook 'ohai-public_ip', git: 'git://github.com/mfdii/chef-ohai-public_ip.git'
 cookbook 'workstation', path: 'cookbooks/workstation'
+cookbook 'audit-cis', '~> 0.4.0'
+cookbook 'omnibus_updater', '~> 1.0.4'
+
