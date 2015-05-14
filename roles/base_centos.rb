@@ -6,7 +6,6 @@ default_attributes(
 		:interval => 60,
 		:splay => 30,
 		:config => {
-			"Ohai::Config[:plugin_path]" => ' << "/etc/chef/ohai_plugins"',
 			"audit_mode" => ":enabled"
 		}
 	},
