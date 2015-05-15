@@ -7,10 +7,9 @@ control_group 'SSH Security' do
     it 'disables root logins over ssh' do
       expect(file('/etc/ssh/sshd_config')).to contain('PermitRootLogin no')
     end
-    
+
     it "PasswordAuthentication is disabled"
       expect(file('/etc/ssh/sshd_config')).to match(/PasswordAuthentication\s+no/)
     end
-  end
   end
 end
